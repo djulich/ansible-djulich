@@ -1,0 +1,39 @@
+[automationcontroller]
+automationcontroller-0 ansible_user=ec2-user ansible_python_interpreter="/usr/libexec/platform-python" ansible_host=44.202.26.59  
+
+[automationgateway]
+automationgateway-0 ansible_user=ec2-user ansible_python_interpreter="/usr/libexec/platform-python" ansible_host=18.208.164.55  
+
+
+[installer]
+installer_machine ansible_connection=local ansible_python_interpreter="/usr/libexec/platform-python"
+
+
+[all:vars]
+pg_host=
+pg_port=5432
+pg_database=awx
+pg_username=awx
+admin_password=Admin!Password!Ctrl
+pg_password=AdminPG!Password!Ctrl
+controller_base_url=https://44.202.26.59/
+gateway_base_url=https://18.208.164.55/
+required_ram=0
+automationgateway_pg_host=automationcontroller-0
+automationgateway_pg_port=5432
+automationgateway_pg_database=gateway
+automationgateway_pg_username=gateway
+automationgateway_admin_password=Admin!Password!Gw
+automationgateway_pg_password=AdminPG!Password!Gw
+
+[automationcontroller:vars]
+receptor_listener=True
+receptor_listener_protocol=tcp
+receptor_log_level=info
+node_type=hybrid
+
+[automationgateway:vars]
+automationgateway_grpc_server_processes=20
+automationgateway_grpc_server_max_threads_per_process=40
+install_set_routable_hostname=False
+

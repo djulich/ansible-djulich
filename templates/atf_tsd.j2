@@ -1,0 +1,25 @@
+{
+  "version": "0.1.4",
+  "artifact": {
+    "type": "aap-candidate",
+    "version": "2.5",
+    "builds": []
+  },
+  "scenario": {
+    "name": "aap_tsd_scenario_djdebug",
+    "environment": {
+      "type": "gateway",
+      "automationgateway": {
+        "url": "{{ gateway_base_url }}",
+        "admin_user": "admin",
+        "admin_password": "{{ automationgateway_admin_password }}"
+      },
+      "automationcontroller": {
+        "url": "{{ controller_base_url }}",
+        "admin_user": "admin",
+        "admin_password": "{{ admin_password }}"
+      }
+    }
+  }
+}
+
